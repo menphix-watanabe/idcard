@@ -38,7 +38,8 @@ def guess_id_card_missing_birthday(partial_num: str):
             print('Cannot have unknown other than birthday', file=sys.stderr)
             return False
 
-    for year in range(1900, now.year + 1):
+    # for year in range(1900, now.year + 1):
+    for year in range(2001, 2002):
         is_leapyear = year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
         for month in range(1, 13):
             if month in [1, 3, 5, 7, 8, 10, 12]:
@@ -76,7 +77,7 @@ def main(args):
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Guess all the possible combinations of ID card number')
-    parser.add_argument('input_str', help='Partial ID card string')
+    parser.add_argument('input_str', help='Partial ID card string, unknown digits are marked with "?"')
     return parser.parse_args()
 
 
